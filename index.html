@@ -82,13 +82,14 @@
 <script>
  function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
 </script>
+
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
 <!--  ----------------------------------------------------------------------  -->
 
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D5j00000D9n7F" method="POST">
 
-<input type=hidden name='captcha_settings' value='{"keyname":"github","fallback":"true","orgId":"00D5j00000D9n7F","ts":""}'>
+<input type=hidden name='captcha_settings' value='{"keyname":"Github_io","fallback":"true","orgId":"00D5j00000D9n7F","ts":""}'>
 <input type=hidden name="orgid" value="00D5j00000D9n7F">
 <input type=hidden name="retURL" value="https://paheerathans.github.io/">
 
@@ -97,7 +98,7 @@
 <!--  these lines if you wish to test in debug mode.                          -->
 <!--  <input type="hidden" name="debug" value=1>                              -->
 <!--  <input type="hidden" name="debugEmail"                                  -->
-<!--  value="paheerathan03@gmail.com">                                        -->
+<!--  value="test@gmail.com">                                        -->
 <!--  ----------------------------------------------------------------------  -->
 
 <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
@@ -110,7 +111,7 @@
 
 <label for="description">Description</label><textarea name="description"></textarea><br>
 
-<div class="g-recaptcha" data-sitekey="6LeyjBUpAAAAAEQ5DZUK4D3IEBkLCaOXdO5e0fjq"></div><br>
+<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe"></div><br>
 <input type="submit" name="submit">
 
 </form>
