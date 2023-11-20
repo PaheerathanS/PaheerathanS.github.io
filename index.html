@@ -83,6 +83,14 @@
  function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
 </script>
 
+<!-- SUBMIT BUTTON FN -->
+<script>
+ function enableButton(){
+   document.getElementById("salesforcebutton").disabled = false;
+ }
+</script>
+<!-- -->
+	
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
 <!--  ----------------------------------------------------------------------  -->
@@ -111,8 +119,8 @@
 
 <label for="description">Description</label><textarea name="description" required></textarea><br>
 
-<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe"></div><br>
-<input type="submit" name="submit">
+<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe" data-callback="enableButton"></div><br>
+<input type="submit" name="submit" id="salesforcebutton" disabled="disabled">
 
 </form>
 <!--WEB FORM END -->
