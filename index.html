@@ -79,16 +79,42 @@
 
 <!-- WEB FORM START -->
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<!--<script>
+ function timestamp() { 
+	 var response = document.getElementById("g-recaptcha-response"); 
+	 if (response == null || response.value.trim() == "") {
+		 var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+		 elems["ts"] = JSON.stringify(new Date().getTime());
+		 document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); 
+	 } 
+ } setInterval(timestamp, 500); 
+</script>-->
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script>
- function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+    var currentTimestamp;
+    $.getJSON( "http://icanhazepoch.com/", function( data ) {
+        currentTimestamp = data * 1000;
+        setInterval(timestamp, 500);
+    });
+
+    function timestamp() {
+        currentTimestamp += 500;
+        var response = document.getElementById("g-recaptcha-response");
+        if (response == null || response.value.trim() == "") {
+            var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+            elems["ts"] = JSON.stringify(currentTimestamp);
+            document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+        }
+    }
 </script>
 
 <!-- SUBMIT BUTTON FN -->
-<script>
+<!--<script>
  function enableButton(){
    document.getElementById("salesforcebutton").disabled = false;
  }
-</script>
+</script>-->
 <!-- -->
 	
 <!--  ----------------------------------------------------------------------  -->
@@ -119,8 +145,10 @@
 
 <label for="description">Description</label><textarea name="description" required></textarea><br>
 
-<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe" data-callback="enableButton"></div><br>
-<input type="submit" name="submit" id="salesforcebutton" disabled="disabled">
+<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe" ></div><br>
+<input type="submit" name="submit" id="salesforcebutton" >
+<!--<div class="g-recaptcha" data-sitekey="6LejlhUpAAAAAP7l3ziYaQ_RM82tX9_7MAx21lYe" data-callback="enableButton"></div><br>
+<input type="submit" name="submit" id="salesforcebutton" disabled="disabled">--> 
 
 </form>
 <!--WEB FORM END -->
